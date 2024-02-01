@@ -1,2 +1,4 @@
 class Extra < ApplicationRecord
-end
+    validates :name, :price, presence: true
+  end
+  

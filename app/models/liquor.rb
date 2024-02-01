@@ -1,2 +1,4 @@
 class Liquor < ApplicationRecord
-end
+    validates :name, :price, presence: true
+  end
+  
