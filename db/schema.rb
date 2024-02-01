@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_01_172903) do
+ActiveRecord::Schema.define(version: 2024_02_01_173835) do
 
   create_table "extras", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "extras_orders", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "extra_id", null: false
   end
 
   create_table "liquors", force: :cascade do |t|
@@ -26,11 +31,21 @@ ActiveRecord::Schema.define(version: 2024_02_01_172903) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "liquors_orders", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "liquor_id", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "orders_vapes", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "vape_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
